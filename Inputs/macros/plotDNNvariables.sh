@@ -1,7 +1,7 @@
-ERA=2018
+ERA=2016
 #PATH_TO_TUPLES="/nfs/dust/cms/user/rasp/storage/cardinia/2018/OutputDNN/March13/predictions_2018/"
-PATH_TO_TUPLES="/nfs/dust/cms/user/rasp/storage/cardinia/2018/InputDNN_March28/"
-PATH_FOR_OUTPUT="./figures_March28/"
+PATH_TO_TUPLES="/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/mlFramework/In_Tuples_2016/et/14June/"
+PATH_FOR_OUTPUT="./figures_14June/2016/"
 
 WEIGHT="weight*"
 CUTS="(pt_1>21&&puppimt_1<50&&byVVVLooseDeepTau2017v2p1VSjet_2>0.5&&abs(eta_1)<2.1&&m_vis>40)*"
@@ -9,7 +9,7 @@ CUTSIPMU="(pt_1>21&&puppimt_1<50&&byVVVLooseDeepTau2017v2p1VSjet_2>0.5&&abs(eta_
 CUTSIPTAU="(pt_1>21&&puppimt_1<50&&byVVVLooseDeepTau2017v2p1VSjet_2>0.5&&abs(eta_1)<2.1&&m_vis>40&&dmMVA_2==0)*"
 CUTSMUPI="(pt_1>21&&puppimt_1<50&&byVVVLooseDeepTau2017v2p1VSjet_2>0.5&&abs(eta_1)<2.1&&m_vis>40)*"
 #((is_singleLepTrigger&&pt_1>25)||(is_crossTrigger&&pt_2>28&&pt_1>21))*"
-APPLY_FF="true"
+APPLY_FF="false"
 USE_EMBEDDED="false"
 SHOW_SIGNAL="true"
 COMPARE_CP="true"
@@ -28,6 +28,8 @@ root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("eta_2","#eta_{#tau}",30,-3.,
 root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("phi_2","#phi_{#tau}[rad]",30,-TMath::Pi(),TMath::Pi(),"%s","%s","Events",-1,"%s","%s",%s,%s,%s,false,false,%s,%s)' $WEIGHT $CUTS $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP`
 root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("IP_signif_RefitV_with_BS_2","#tauIPsig",20,0.,10.,"%s","%s","Events",-1,"%s","%s",%s,%s,%s,false,false,%s,%s)' $WEIGHT $CUTSIPTAU $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
 root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("IP_signif_RefitV_with_BS_1","#muIPsig",20,0.,10.,"%s","%s","Events",-1,"%s","%s",%s,%s,%s,false,false,%s,%s)' $WEIGHT $CUTSIPMU $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
+root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("IP_signif_PV_with_BS_2","#tauIPsig",20,0.,10.,"%s","%s","Events",-1,"%s","%s",%s,%s,%s,false,false,%s,%s)' $WEIGHT $CUTSIPTAU $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
+root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("IP_signif_PV_with_BS_1","#muIPsig",20,0.,10.,"%s","%s","Events",-1,"%s","%s",%s,%s,%s,false,false,%s,%s)' $WEIGHT $CUTSIPMU $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
 root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("IP_signif_RefitV_with_BS_uncorr_2","#tauIPsigUncorr",20,0.,10.,"%s","%s","Events",-1,"%s","%s",%s,%s,%s,false,false,%s,%s)' $WEIGHT $CUTSIPTAU $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
 root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("IP_signif_RefitV_with_BS_uncorr_1","#muIPsigUncorr",20,0.,10.,"%s","%s","Events",-1,"%s","%s",%s,%s,%s,false,false,%s,%s)' $WEIGHT $CUTSIPMU $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
 root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("tau_decay_mode_2","HPS-DM",14,1.,13.,"%s","%s","Events",-1,"%s","%s",%s,%s,%s,false,false,%s,%s)' $WEIGHT $CUTS $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
@@ -49,7 +51,7 @@ root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("acotautau_01","#phi_{CP}",11
 root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("acotautau_00","#phi_{CP}",11,0.,2*TMath::Pi(),"%s","%s","Events",-1,"%s","%s",%s,%s,%s,true,false,%s,%s)' $WEIGHT $CUTSMUPI $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
 
 ### b-jets ###
-root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("nbtag","nbtags",2,0,2,"%s","%s","Events",-1,"%s","%s",%s,%s,%s,false,false,%s,%s)' $WEIGHT $CUTS $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
+# root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("nbtag","nbtags",2,0,2,"%s","%s","Events",-1,"%s","%s",%s,%s,%s,false,false,%s,%s)' $WEIGHT $CUTS $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
 #root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("bpt_1","p_{T,lead.bj}[GeV]",30,16.,136.,"%s","%s","Events",-1,"%s","%s",%s,%s,%s,false,false,%s,%s)' $WEIGHT $CUTS $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
 #root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("bpt_2","p_{T,trail.bj}[GeV]",30,16.,136.,"%s","%s","Events",-1,"%s","%s",%s,%s,%s,false,false,%s,%s)' $WEIGHT $CUTS $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
 #root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("beta_1","#eta_{lead.bj}",30,-3.,3.,"%s","%s","Events",-1,"%s","%s",%s,%s,%s,false,false,%s,%s)' $WEIGHT $CUTS $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 

@@ -154,7 +154,7 @@ void   Plot_lept_mutau_NNScore(TString directory = "/nfs/dust/cms/user/rasp/stor
       _largeScale=LargeScale;
     }
     TString cuts = "(pt_1>21&&puppimt_1<50&&byVVVLooseDeepTau2017v2p1VSjet_2>0.5&&abs(eta_1)<2.1&&m_vis>40)*";
-    if (categoryIndex==0) cuts+= "(IP_signif_RefitV_with_BS_1>1.5)*";
+    // if (categoryIndex==0) cuts+= "(IP_signif_RefitV_with_BS_1>1.5)*";
     Plot_lept_mutau_NNNTuples("predicted_prob",
 			      "NN Score",
 			      50,0.,1.,

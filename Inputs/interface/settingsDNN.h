@@ -326,7 +326,7 @@ const vector<TString> EWKZ_2018            = {"EWKZ2Jets_ZToLL_M-50",
 const vector<TString> GluGluHToTauTau_2018 = { "GluGluHToTauTau_M125" };
 const vector<TString> VBFHToTauTau_2018    = { "VBFHToTauTau_M125"}; 
 const vector<TString> GluGluHToUncorrTauTau_2018 = { "GluGluHToTauTauUncorrDecays_M125" };
-const vector<TString> VBFHToUncorrTauTau_2018 = { "VBFHToTauTauUncorrDecays_M125_1","VBFHToTauTauUncorrDecays_M125_2" };
+const vector<TString> VBFHToUncorrTauTau_2018 = { "VBFHToTauTauUncorrDecays_M125"};
 const vector<TString> WHToUncorrTauTau_2018   = {"WplusHToTauTauUncorrDecays_M125","WminusHToTauTauUncorrDecays_M125"};
 const vector<TString> ZHToUncorrTauTau_2018       = {"ZHToTauTauUncorrDecays_M125" };
 
@@ -402,7 +402,7 @@ const vector<TString> VBFHToTauTau_2017    = { "VBFHToTauTau_M125"
 					       "WplusHToTauTau_M125_13TeV_powheg_pythia8",
 					       "WminusHToTauTau_M125_13TeV_powheg_pythia8"*/}; 
 const vector<TString> GluGluHToUncorrTauTau_2017 = { "GluGluHToTauTauUncorrDecays_M125" };
-const vector<TString> VBFHToUncorrTauTau_2017 = { "VBFHToTauTauUncorrDecays_M125_1","VBFHToTauTauUncorrDecays_M125_2" };
+const vector<TString> VBFHToUncorrTauTau_2017 = { "VBFHToTauTauUncorrDecays_M125" };
 const vector<TString> VHToUncorrTauTau_2017      = { "WminusHToTauTauUncorrDecays_M125","WplusHToTauTauUncorrDecays_M125","ZHToTauTauUncorrDecays_M125" };
 
 const vector<TString> WHToUncorrTauTau_2017   = {"WplusHToTauTauUncorrDecays_M125","WminusHToTauTauUncorrDecays_M125"};
@@ -766,8 +766,8 @@ const map<TString , TString> process_map_2018 = {
   { "DY2Jets" , "DY2JetsToLL_M-50"},
   { "DY3Jets" , "DY3JetsToLL_M-50"},
   { "DY4Jets" , "DY4JetsToLL_M-50"},
-  { "VBFHToTauTauUncorrDecays_M125_1" , "VBFHToTauTauUncorrDecays_M125_1"},
-  { "VBFHToTauTauUncorrDecays_M125_2" , "VBFHToTauTauUncorrDecays_M125_2"}
+  { "VBFHToTauTauUncorrDecays_M125" , "VBFHToTauTauUncorrDecays_M125"},
+  // { "VBFHToTauTauUncorrDecays_M125_2" , "VBFHToTauTauUncorrDecays_M125_2"}
 };
 
 
@@ -782,8 +782,8 @@ const map<TString , TString> process_map_2017 = {
   { "DY2Jets" , "DY2JetsToLL_M-50"},
   { "DY3Jets" , "DY3JetsToLL_M-50"},
   { "DY4Jets" , "DY4JetsToLL_M-50"},
-  { "VBFHToTauTauUncorrDecays_M125_1" , "VBFHToTauTauUncorrDecays_M125_1"},
-  { "VBFHToTauTauUncorrDecays_M125_2" , "VBFHToTauTauUncorrDecays_M125_2"}
+  { "VBFHToTauTauUncorrDecays_M125" , "VBFHToTauTauUncorrDecays_M125"},
+  // { "VBFHToTauTauUncorrDecays_M125_2" , "VBFHToTauTauUncorrDecays_M125_2"}
 };
 
 const map<TString , TString> process_map_2016 = {

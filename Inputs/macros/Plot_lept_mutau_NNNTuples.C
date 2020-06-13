@@ -106,35 +106,35 @@ void Plot_lept_mutau_NNNTuples(TString Variable = "m_fast",
   vector<TString> sampleNames;
   if(directory.Contains("Out")){
     sampleNames = {
-      "mt-NOMINAL_ntuple_data", // data (0)
-      "mt-NOMINAL_ntuple_DY",// (1)Drell-Yan Z->TT  or Embedded
-      "mt-NOMINAL_ntuple_DY", // (2)Drell-Yan Z->LL
-      "mt-NOMINAL_ntuple_W",// (3)WJets
-      "mt-NOMINAL_ntuple_TT",//(4)TTbar leptonic, hadronic, + semileptonic
-      //"mt-NOMINAL_ntuple_ST", // (5) SingleTop tW tbar, SingleTop tW t, SingleTop t antitop, SingleTop t top
-      "mt-NOMINAL_ntuple_VV",// (5) WW, WZ, ZZ, SingleTop tW tbar, SingleTop tW t, SingleTop t antitop, SingleTop t top
-      "mt-NOMINAL_ntuple_ggH125", // (6) Scalar ggH
-      "mt-NOMINAL_ntuple_qqH125", // (7) Scalar VBF H
-      "mt-NOMINAL_ntuple_ggH125", // (8) Pseudoscalar ggH
-      "mt-NOMINAL_ntuple_qqH125" // (9) Pseudoscalar VBF
+      "et-NOMINAL_ntuple_data", // data (0)
+      "et-NOMINAL_ntuple_DY",// (1)Drell-Yan Z->TT  or Embedded
+      "et-NOMINAL_ntuple_DY", // (2)Drell-Yan Z->LL
+      "et-NOMINAL_ntuple_W",// (3)WJets
+      "et-NOMINAL_ntuple_TT",//(4)TTbar leptonic, hadronic, + semileptonic
+      //"et-NOMINAL_ntuple_ST", // (5) SingleTop tW tbar, SingleTop tW t, SingleTop t antitop, SingleTop t top
+      "et-NOMINAL_ntuple_VV",// (5) WW, WZ, ZZ, SingleTop tW tbar, SingleTop tW t, SingleTop t antitop, SingleTop t top
+      "et-NOMINAL_ntuple_ggH125", // (6) Scalar ggH
+      "et-NOMINAL_ntuple_qqH125", // (7) Scalar VBF H
+      "et-NOMINAL_ntuple_ggH125", // (8) Pseudoscalar ggH
+      "et-NOMINAL_ntuple_qqH125" // (9) Pseudoscalar VBF
     };
   }else{
     sampleNames = {
-      "mt-NOMINAL_ntuple_SingleMuon", // data (0)
-      "mt-NOMINAL_ntuple_DYJets",// (1)Drell-Yan Z->TT
-      "mt-NOMINAL_ntuple_DYJets", // (2)Drell-Yan Z->LL
-      "mt-NOMINAL_ntuple_WJets",// (3)WJets
-      "mt-NOMINAL_ntuple_TTbar",//(4)TTbar leptonic, hadronic, + semileptonic
-      //"mt-NOMINAL_ntuple_SingleTop", // (5) SingleTop tW tbar, SingleTop tW t, SingleTop t antitop, SingleTop t top
-      "mt-NOMINAL_ntuple_Diboson",// (5) WW, WZ, ZZ, ST (VV+ST implemented in CreateDNN as of 18 March 2020)
-      "mt-NOMINAL_ntuple_GluGluHToUncorrTauTau", // (6) Scalar ggH
-      "mt-NOMINAL_ntuple_VBFHToUncorrTauTau", // (7) Scalar VBF H
-      "mt-NOMINAL_ntuple_GluGluHToUncorrTauTau", // (8) Pseudoscalar 
-      "mt-NOMINAL_ntuple_VBFHToUncorrTauTau" // (9) Scalar VBF H
+      "et-NOMINAL_ntuple_SingleElectron", // data (0)
+      "et-NOMINAL_ntuple_DYJets",// (1)Drell-Yan Z->TT
+      "et-NOMINAL_ntuple_DYJets", // (2)Drell-Yan Z->LL
+      "et-NOMINAL_ntuple_WJets",// (3)WJets
+      "et-NOMINAL_ntuple_TTbar",//(4)TTbar leptonic, hadronic, + semileptonic
+      //"et-NOMINAL_ntuple_SingleTop", // (5) SingleTop tW tbar, SingleTop tW t, SingleTop t antitop, SingleTop t top
+      "et-NOMINAL_ntuple_Diboson",// (5) WW, WZ, ZZ, ST (VV+ST implemented in CreateDNN as of 18 March 2020)
+      "et-NOMINAL_ntuple_GluGluHToUncorrTauTau", // (6) Scalar ggH
+      "et-NOMINAL_ntuple_VBFHToUncorrTauTau", // (7) Scalar VBF H
+      "et-NOMINAL_ntuple_GluGluHToUncorrTauTau", // (8) Pseudoscalar 
+      "et-NOMINAL_ntuple_VBFHToUncorrTauTau" // (9) Scalar VBF H
     }; 
   }
-  if(useEmbedded&&!directory.Contains("Out"))sampleNames[1]="mt-NOMINAL_ntuple_EmbeddedMuTau";
-  else if(useEmbedded&&directory.Contains("Out"))sampleNames[1]="mt-NOMINAL_ntuple_EMB";
+  if(useEmbedded&&!directory.Contains("Out"))sampleNames[1]="et-NOMINAL_ntuple_EmbeddedElTau";
+  else if(useEmbedded&&directory.Contains("Out"))sampleNames[1]="et-NOMINAL_ntuple_EMB";
   const unsigned int nSamples = sampleNames.size(); //DY is used twice, for Zll and Ztt
   if(!directory.Contains("Out")){ 
 		for (size_t i=0; i<nSamples; ++i) {
@@ -155,9 +155,9 @@ void Plot_lept_mutau_NNNTuples(TString Variable = "m_fast",
   TString cutsaIso[nSamples];
 
   // MC specific cuts to select certain type of particle
-  TString isGenMuTau="(gen_match_2==5&&gen_match_1==4)*";
-  TString isZLL="!(gen_match_2==5&&gen_match_1==4)*";
-  TString isNotGenMuTau="!(gen_match_2==5&&gen_match_1==4)*";
+  TString isGenMuTau="(gen_match_2==5&&gen_match_1==3)*";
+  TString isZLL="!(gen_match_2==5&&gen_match_1==3)*";
+  TString isNotGenMuTau="!(gen_match_2==5&&gen_match_1==3)*";
   TString isNotGenJet="(gen_match_2!=6)*";
 	if (!useEmbedded) isNotGenMuTau = "*";
 	if (!FFmethod) isNotGenJet = "*";

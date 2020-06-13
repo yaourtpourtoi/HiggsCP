@@ -190,13 +190,13 @@ int main(int argc, char * argv[]) {
     neventsW4Jets  = getNEventsProcessed(input_dir,process_map->at("W4Jets"),era);
   }
 
-  double neventsVBF1 = 0;
-  double neventsVBF2 = 0;
-  if (Sample.Contains("VBFHToUncor")&&era!="2016"){
-    neventsVBF1=getNEventsProcessed(input_dir,process_map->at("VBFHToTauTauUncorrDecays_M125_1"),era);
-    neventsVBF2=getNEventsProcessed(input_dir,process_map->at("VBFHToTauTauUncorrDecays_M125_2"),era);
-
-  }
+  // double neventsVBF1 = 0;
+  // double neventsVBF2 = 0;
+  // if (Sample.Contains("VBFHToUncor")&&era!="2016"){
+  //   neventsVBF1=getNEventsProcessed(input_dir,process_map->at("VBFHToTauTauUncorrDecays_M125_1"),era);
+  //   neventsVBF2=getNEventsProcessed(input_dir,process_map->at("VBFHToTauTauUncorrDecays_M125_2"),era);
+  // 
+  // }
 
 
   double neventsDYIncl  = 0;
@@ -335,6 +335,8 @@ int main(int argc, char * argv[]) {
 
 	float embweight;
 	float trigweight;
+	float trigweight_1;
+	float trigweight_2;
 	float mcweight;
 	float effweight;
 	float puweight;
@@ -1065,7 +1067,9 @@ int main(int argc, char * argv[]) {
 	//	outTree->Branch("gen_noutgoing",&gen_noutgoing,"gen_noutgoing/I");
 	
 	//	outTree->Branch("embweight",&embweight,"embweight/F");
-	//	outTree->Branch("trigweight",&trigweight,"trigweight/F");
+		outTree->Branch("trigweight",&trigweight,"trigweight/F");
+		outTree->Branch("trigweight_1",&trigweight_1,"trigweight_1/F");
+		outTree->Branch("trigweight_2",&trigweight_2,"trigweight_2/F");
 	//	outTree->Branch("mcweight",&mcweight,"mcweight/F");
 	//	outTree->Branch("effweight",&effweight,"effweight/F");
 	//	outTree->Branch("puweight",&puweight,"puweight/F");
@@ -1794,6 +1798,8 @@ int main(int argc, char * argv[]) {
 	  
 	  inTree->SetBranchAddress("embweight",&embweight);
 	  inTree->SetBranchAddress("trigweight",&trigweight);
+	  inTree->SetBranchAddress("trigweight_1",&trigweight_1);
+	  inTree->SetBranchAddress("trigweight_2",&trigweight_2);
 	  inTree->SetBranchAddress("mcweight",&mcweight);
 	  inTree->SetBranchAddress("effweight",&effweight);
 	  inTree->SetBranchAddress("puweight",&puweight);
@@ -3248,9 +3254,9 @@ int main(int argc, char * argv[]) {
 		  jeta_1= -10;
 		}
 	      }
-	      if (isVBF&&era!="2016") {
-		xsec_lumi_weight = luminosity * xsec / (neventsVBF1+neventsVBF2);
-	      }
+	  //     if (isVBF&&era!="2016") {
+		// xsec_lumi_weight = luminosity * xsec / (neventsVBF1+neventsVBF2);
+	  //     }
 
 	      // Stitching only for wjets MC in n-jet binned samples in gen_noutgoing
 	      if( isW ){
