@@ -4,7 +4,7 @@ PATH_TO_TUPLES="/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/mlFramework/In
 PATH_FOR_OUTPUT="./figures_14June/2016/QCD_emb/"
 
 WEIGHT="weight*"
-CUTS="(&&pt_1>26&&pt_2>30&&byMediumDeepTau2017v2p1VSjet_2>0.5)*"
+CUTS="(pt_1>26&&pt_2>30&&byMediumDeepTau2017v2p1VSjet_2>0.5)*"
 CUTSIPMU="${CUTS}"
 CUTSIPTAU="${CUTS}(dmMVA_2==0)*"
 CUTSMUPI="${CUTS}"
