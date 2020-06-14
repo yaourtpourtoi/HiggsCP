@@ -96,11 +96,12 @@ void Plot_lept_mutau_NNNTuples(TString Variable = "m_fast",
 
   // weights
   TString topweight("1.0*");
-  TString qcdweight("1.06*");
+  TString qcdweight("1.0*");
+  if(era == 2016) qcdweight("1.3*");
   TString zptmassweight="1.0*";                  //TO DO: CHANGE WEIGHTs
 	TString Wjets_weight("1.0*");
-	if (!FFmethod)
-		Wjets_weight = "0.96*";
+	// if (!FFmethod)
+	// 	Wjets_weight = "0.96*";
 
  
   vector<TString> sampleNames;
