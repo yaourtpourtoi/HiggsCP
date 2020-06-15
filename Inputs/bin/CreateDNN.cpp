@@ -1066,15 +1066,15 @@ int main(int argc, char * argv[]) {
 
 	//	outTree->Branch("gen_noutgoing",&gen_noutgoing,"gen_noutgoing/I");
 	
-	//	outTree->Branch("embweight",&embweight,"embweight/F");
+		outTree->Branch("embweight",&embweight,"embweight/F");
 		outTree->Branch("trigweight",&trigweight,"trigweight/F");
 		outTree->Branch("trigweight_1",&trigweight_1,"trigweight_1/F");
 		outTree->Branch("trigweight_2",&trigweight_2,"trigweight_2/F");
-	//	outTree->Branch("mcweight",&mcweight,"mcweight/F");
-	//	outTree->Branch("effweight",&effweight,"effweight/F");
-	//	outTree->Branch("puweight",&puweight,"puweight/F");
-	//	outTree->Branch("topptweight",&topptweight,"topptweight/F");
-	//	outTree->Branch("zptweight",&zptweight,"zptweight/D");
+		outTree->Branch("mcweight",&mcweight,"mcweight/F");
+		outTree->Branch("effweight",&effweight,"effweight/F");
+		outTree->Branch("puweight",&puweight,"puweight/F");
+		outTree->Branch("topptweight",&topptweight,"topptweight/F");
+		outTree->Branch("zptweight",&zptweight,"zptweight/D");
 	//	outTree->Branch("trkeffweight",&trkeffweight,"trkeffweight/D");
 	outTree->Branch("weight",&weight,"weight/F");
 	outTree->Branch("weight_CMS_PreFire_13TeVUp",&weight_CMS_PreFire_13TeVUp,"CMS_PreFire_13TeVUp/F");
