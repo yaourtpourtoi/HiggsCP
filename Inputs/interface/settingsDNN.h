@@ -353,11 +353,11 @@ const vector<TString> EmbeddedMuTau_2017        = { "EmbeddedMuTau_Run2017B",
 						    "EmbeddedMuTau_Run2017D",
 						    "EmbeddedMuTau_Run2017E",
 						    "EmbeddedMuTau_Run2017F"};
-const vector<TString> EmbeddedElTau_2017        = { "EmbeddingElTau_Run2017B",
-						    "EmbeddingElTau_Run2017C",
-						    "EmbeddingElTau_Run2017D",
-						    "EmbeddingElTau_Run2017E",
-						    "EmbeddingElTau_Run2017F"};
+const vector<TString> EmbeddedElTau_2017        = { "EmbeddedElTau_Run2017B",
+						    "EmbeddedElTau_Run2017C",
+						    "EmbeddedElTau_Run2017D",
+						    "EmbeddedElTau_Run2017E",
+						    "EmbeddedElTau_Run2017F"};
 const vector<TString> Embedded_2017        = { "Embedding_Run2017" };
 const vector<TString> DYJets_2017          = { "DY1JetsToLL_M-50" ,
 					       "DY2JetsToLL_M-50" ,
