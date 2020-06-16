@@ -2074,12 +2074,15 @@ int main(int argc, char * argv[]) {
 
 		TLorentzVector MET(0.,0.,0.,0.);
 		MET.SetPtEtaPhiM(puppimet,0.,puppimetphi,0);
-		TLorentzVector MU(0.,0.,0.,0.);
-		MU.SetPtEtaPhiM(pt_1,eta_1,phi_1,0);
-		TLorentzVector FakeMET=MU+MET;
+		TLorentzVector LEP(0.,0.,0.,0.);
+		LEP.SetPtEtaPhiM(pt_1,eta_1,phi_1,0);
+		TLorentzVector FakeMET=LEP+MET;
 		float met_var_qcd, met_var_w;
 		met_var_qcd=puppimet*TMath::Cos(DeltaPhi(puppimetphi,phi_2))/pt_2;
 		met_var_w=FakeMET.Pt()*TMath::Cos(DeltaPhi(FakeMET.Phi(),phi_2))/pt_2;
+    bool ff_singlelep_trig = trg_singlemuon;
+    if (channel == "et") ff_singlelep_trig = trg_singleelectron;
+
 		auto args = std::vector<double>{pt_2,
 						static_cast<double>(tau_decay_mode_2),
 						static_cast<double>(njets),
@@ -2087,7 +2090,7 @@ int main(int argc, char * argv[]) {
 						static_cast<double>(os),
 						puppimt_1,
 						iso_1,
-						static_cast<double>(trg_singlemuon),
+						static_cast<double>(ff_singlelep_trig),
 						m_vis};
 
 		ff_nom = fns_[("ff_"+channel+"_medium_dmbins").Data()]->eval(args.data());
@@ -2099,7 +2102,7 @@ int main(int argc, char * argv[]) {
 						    pt_1,
 						    static_cast<double>(os),
 						    iso_1,
-						    static_cast<double>(trg_singlemuon),
+						    static_cast<double>(ff_singlelep_trig),
 						    met_var_qcd,
 						    met_var_w,
 						    FakeMET.Pt(),
