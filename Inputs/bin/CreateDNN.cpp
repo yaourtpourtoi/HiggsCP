@@ -330,6 +330,11 @@ int main(int argc, char * argv[]) {
  	
 	bool trg_singlemuon;
 	bool trg_mutaucross;
+	bool trg_singleelectron;
+	bool trg_etaucross;
+	bool is_SingleLepTrigger;
+	bool is_CrossTrigger;
+	bool is_Trigger;
 	
 	int gen_noutgoing;
 
@@ -1063,6 +1068,11 @@ int main(int argc, char * argv[]) {
 	
 	outTree->Branch("trg_singlemuon",&trg_singlemuon,"trg_singlemuon/O");
 	outTree->Branch("trg_mutaucross",&trg_mutaucross,"trg_mutaucross/O");
+	outTree->Branch("trg_singleelectron",&trg_singleelectron,"trg_singleelectron/O");
+	outTree->Branch("trg_etaucross",&trg_etaucross,"trg_etaucross/O");
+	outTree->Branch("is_SingleLepTrigger",&is_SingleLepTrigger,"is_SingleLepTrigger/O");
+	outTree->Branch("is_CrossTrigger",&is_CrossTrigger,"is_CrossTrigger/O");
+	outTree->Branch("is_Trigger",&is_Trigger,"is_Trigger/O");
 
 	//	outTree->Branch("gen_noutgoing",&gen_noutgoing,"gen_noutgoing/I");
 	
@@ -1792,6 +1802,8 @@ int main(int argc, char * argv[]) {
 	  
 	  inTree->SetBranchAddress("trg_singlemuon",&trg_singlemuon);
 	  inTree->SetBranchAddress("trg_mutaucross",&trg_mutaucross);
+	  inTree->SetBranchAddress("trg_singleelectron",&trg_singleelectron);
+	  inTree->SetBranchAddress("trg_etaucross",&trg_etaucross);
 	  
 	  //branches for stichting
 	  inTree->SetBranchAddress("gen_noutgoing",&gen_noutgoing);
@@ -1954,9 +1966,9 @@ int main(int argc, char * argv[]) {
 	      }
 	      //Preselection
 	      if(applyPreselection){
-		bool is_trigger = false;
-		bool is_singleLepTrigger = false;
-		bool is_crossTrigger = false;
+		is_Trigger = false;
+		is_SingleLepTrigger = false;
+		is_CrossTrigger = false;
 		if(channel=="mt"){
 		  if( iso_1 > 0.15 )              continue;
 		  if( pt_1 < 20)                  continue; 
@@ -1964,26 +1976,42 @@ int main(int argc, char * argv[]) {
 		  if (abs(eta_1)>2.1)             continue;
 		  if (abs(eta_2)>2.3)             continue;
 		  if (era=="2016") {
-		    is_singleLepTrigger = (trg_singlemuon>0.5&&pt_1>23&&abs(eta_1)<2.1);
-		    is_crossTrigger = (trg_mutaucross>0.5&&pt_1>20&&abs(eta_1)<2.1&&pt_2>25);
-		    is_trigger = is_singleLepTrigger || is_crossTrigger;
+		    is_SingleLepTrigger = (trg_singlemuon>0.5&&pt_1>23&&abs(eta_1)<2.1);
+		    is_CrossTrigger = (trg_mutaucross>0.5&&pt_1>20&&abs(eta_1)<2.1&&pt_2>25);
+		    is_Trigger = is_SingleLepTrigger || is_CrossTrigger;
 		  }
 		  if (era=="2017"||era=="2018") {
-		    is_singleLepTrigger = (trg_singlemuon>0.5&&pt_1>25);
-                    is_crossTrigger = (trg_mutaucross>0.5&&pt_1>21&&abs(eta_1)<2.1&&pt_2>32&&abs(eta_2)<2.1);
-                    is_trigger = is_singleLepTrigger || is_crossTrigger;
+		    is_SingleLepTrigger = (trg_singlemuon>0.5&&pt_1>25);
+                    is_CrossTrigger = (trg_mutaucross>0.5&&pt_1>21&&abs(eta_1)<2.1&&pt_2>32&&abs(eta_2)<2.1);
+                    is_Trigger = is_SingleLepTrigger || is_CrossTrigger;
 		  }
-		  if( is_trigger < 0.5 ) continue;
+		  if( is_Trigger < 0.5 ) continue;
 		  if( byTightDeepTau2017v2p1VSmu_2  < 0.5 ) continue;
 		  if( byVVLooseDeepTau2017v2p1VSe_2 < 0.5 ) continue;
 		}else{
-		  if( iso_1 > 0.10 )              continue;
+		  if( iso_1 > 0.15 )              continue;
 		  if( pt_1 < 20 )                 continue; 
 		  if( pt_2 < 20 )                 continue; 
 		  if (abs(eta_1)>2.1)             continue;
 		  if (abs(eta_2)>2.3)             continue;
 		  if( byVLooseDeepTau2017v2p1VSmu_2 < 0.5 ) continue;
 		  if( byTightDeepTau2017v2p1VSe_2   < 0.5 ) continue;
+      if (era == "2016") {
+        is_SingleLepTrigger = (trg_singlemuon>0.5&&pt_1>26&&abs(eta_1)<2.1);
+        is_CrossTrigger = true;
+        is_Trigger = is_SingleLepTrigger || is_CrossTrigger;
+      }
+      if (era == "2017") {
+        is_SingleLepTrigger = (trg_singlemuon>0.5&&pt_1>33&&abs(eta_1)<2.1);
+        is_CrossTrigger = (trg_mutaucross>0.5&&pt_1>25&&pt_1<33&&abs(eta_1)<2.1&&pt_2>35&&abs(eta_2)<2.1);
+        is_Trigger = is_SingleLepTrigger || is_CrossTrigger;
+      }
+      if (era == "2018") {
+        is_SingleLepTrigger = (trg_singlemuon>0.5&&pt_1>33&&abs(eta_1)<2.1);
+        is_CrossTrigger = (trg_mutaucross>0.5&&pt_1>25&&pt_1<33&&abs(eta_1)<2.1&&pt_2>35&&abs(eta_2)<2.1);
+        is_Trigger = is_SingleLepTrigger || is_CrossTrigger;
+      }
+      // if( is_Trigger < 0.5 ) continue;
 		}
 		if( byVVVLooseDeepTau2017v2p1VSjet_2 < 0.5 ) continue;
 		if( extraelec_veto > 0.5 )       continue;
@@ -2004,8 +2032,8 @@ int main(int argc, char * argv[]) {
 		}
 		if( isEmbedded && mcweight > 1000 ) continue;
 
-	      if(is_singleLepTrigger)countSingleTrig+=1;
-	      else if(is_crossTrigger)countXTrig+=1;
+	      if(is_SingleLepTrigger)countSingleTrig+=1;
+	      else if(is_CrossTrigger)countXTrig+=1;
 	      }
 	      //End of preselection
 
