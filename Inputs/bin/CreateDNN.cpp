@@ -1997,20 +1997,18 @@ int main(int argc, char * argv[]) {
 		  if( byVLooseDeepTau2017v2p1VSmu_2 < 0.5 ) continue;
 		  if( byTightDeepTau2017v2p1VSe_2   < 0.5 ) continue;
       if (era == "2016") {
-        is_SingleLepTrigger = (trg_singlemuon>0.5&&pt_1>26&&abs(eta_1)<2.1);
+        is_SingleLepTrigger = (trg_singleelectron>0.5&&pt_1>26&&abs(eta_1)<2.1);
         is_CrossTrigger = true;
-        is_Trigger = is_SingleLepTrigger || is_CrossTrigger;
       }
       if (era == "2017") {
-        is_SingleLepTrigger = (trg_singlemuon>0.5&&pt_1>33&&abs(eta_1)<2.1);
-        is_CrossTrigger = (trg_mutaucross>0.5&&pt_1>25&&pt_1<33&&abs(eta_1)<2.1&&pt_2>35&&abs(eta_2)<2.1);
-        is_Trigger = is_SingleLepTrigger || is_CrossTrigger;
+        is_SingleLepTrigger = (trg_singleelectron>0.5&&pt_1>33&&abs(eta_1)<2.1);
+        is_CrossTrigger = (trg_etaucross>0.5&&pt_1>25&&pt_1<33&&abs(eta_1)<2.1&&pt_2>35&&abs(eta_2)<2.1);
       }
       if (era == "2018") {
-        is_SingleLepTrigger = (trg_singlemuon>0.5&&pt_1>33&&abs(eta_1)<2.1);
-        is_CrossTrigger = (trg_mutaucross>0.5&&pt_1>25&&pt_1<33&&abs(eta_1)<2.1&&pt_2>35&&abs(eta_2)<2.1);
-        is_Trigger = is_SingleLepTrigger || is_CrossTrigger;
+        is_SingleLepTrigger = (trg_singleelectron>0.5&&pt_1>33&&abs(eta_1)<2.1);
+        is_CrossTrigger = (trg_etaucross>0.5&&pt_1>25&&pt_1<33&&abs(eta_1)<2.1&&pt_2>35&&abs(eta_2)<2.1);
       }
+      is_Trigger = is_SingleLepTrigger || is_CrossTrigger;
       // if( is_Trigger < 0.5 ) continue;
 		}
 		if( byVVVLooseDeepTau2017v2p1VSjet_2 < 0.5 ) continue;
