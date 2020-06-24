@@ -8,6 +8,7 @@
 void   Plot_lept_mutau_NNScore(TString directory = "/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/mlFramework/Out_Tuples_2018/et/17June_LGB/predictions_2018/",
 			       TString outputDir = "/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/HiggsCP/Inputs/macros/figures_17June/2018/LGB/",
 			       int year=2018,
+						 TString channel = "mt",
 			       bool FFmethod = true,  
 			       bool useEmbedded = true,
 			       bool LargeScale = true,  
@@ -37,6 +38,7 @@ void   Plot_lept_mutau_NNScore(TString directory = "/nfs/dust/cms/user/filatovo/
 			      directory,
 			      outputDir,
 			      year,
+						channel,
 			      FFmethod,
 			      useEmbedded,
 			      true,  
@@ -61,6 +63,7 @@ void   Plot_lept_mutau_NNScore(TString directory = "/nfs/dust/cms/user/filatovo/
 			      directory,
 			      outputDir,
 			      year,
+						channel,
 			      FFmethod,
 			      useEmbedded,  
 			      true,  
@@ -85,6 +88,7 @@ void   Plot_lept_mutau_NNScore(TString directory = "/nfs/dust/cms/user/filatovo/
 			      directory,
 			      outputDir,
 			      year,
+						channel,
 			      FFmethod,
 			      useEmbedded,  
 			      true,  
@@ -109,6 +113,7 @@ void   Plot_lept_mutau_NNScore(TString directory = "/nfs/dust/cms/user/filatovo/
 						directory,
 						outputDir,
 						year,
+						channel,
 						FFmethod,
 						useEmbedded,  
 						true,  
@@ -121,8 +126,7 @@ void   Plot_lept_mutau_NNScore(TString directory = "/nfs/dust/cms/user/filatovo/
 						FORCE
 						);
 	}
-	
-  /*
+	  
   bool _logY = false;
   bool _largeScale = false;
   for(int categoryIndex=0;categoryIndex<nCategories;categoryIndex++){
@@ -146,6 +150,7 @@ void   Plot_lept_mutau_NNScore(TString directory = "/nfs/dust/cms/user/filatovo/
 			      directory,
 			      outputDir,
 			      year,
+						channel,
 			      //false,
 			      FFmethod,
 			      //false,  
@@ -159,80 +164,6 @@ void   Plot_lept_mutau_NNScore(TString directory = "/nfs/dust/cms/user/filatovo/
 			      "",
 			      FORCE
 			      );
-    */
-		
-		
-		/*
-  Plot_lept_mutau_NNNTuples("predicted_prob",
-			      "DNN Score",
-			      50,0.,1.,
-			      "weight*",
-			      cuts,
-			      "Events",
-			      categoryIndex,
-			      directory,
-			      outputDir,
-			      year,
-			      false,
-			      //FFmethod,
-			      false,  
-			      //useEmbedded,  
-			      _largeScale,  
-			      _logY,
-			      showSignal,
-			      compareCP,
-			      scaleSignal,
-			      blindData,
-			      "",
-			      FORCE
-			      );
-  
-  Plot_lept_mutau_NNNTuples("predicted_prob",
-			      "DNN Score",
-			      50,0.,1.,
-			      "weight*",
-			      cuts,
-			      "Events",
-			      categoryIndex,
-			      directory,
-			      outputDir,
-			      year,
-			    //false,
-			      FFmethod,
-			      false,  
-			      //useEmbedded,  
-			      _largeScale,  
-			      _logY,
-			      showSignal,
-			      compareCP,
-			      scaleSignal,
-			      blindData,
-			      "",
-			      FORCE
-			      );
-  
-  Plot_lept_mutau_NNNTuples("predicted_prob",
-			      "DNN Score",
-			      50,0.,1.,
-			      "weight*",
-			      cuts,
-			      "Events",
-			      categoryIndex,
-			      directory,
-			      outputDir,
-			      year,
-			      false,
-			    //FFmethod,
-			    //false,  
-			      useEmbedded,  
-			      _largeScale,  
-			      _logY,
-			      showSignal,
-			      compareCP,
-			      scaleSignal,
-			      blindData,
-			      "",
-			      FORCE
-			      );*/
+    
 }
  
