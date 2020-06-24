@@ -2001,8 +2001,8 @@ int main(int argc, char * argv[]) {
         is_CrossTrigger = false;
       }
       if (era == "2017") {
-        is_SingleLepTrigger = (trg_singleelectron>0.5&&pt_1>33&&abs(eta_1)<2.1);
-        is_CrossTrigger = (trg_etaucross>0.5&&pt_1>25&&pt_1<33&&abs(eta_1)<2.1&&pt_2>35&&abs(eta_2)<2.1);
+        is_SingleLepTrigger = (trg_singleelectron>0.5&&pt_1>28&&abs(eta_1)<2.1);
+        is_CrossTrigger = (trg_etaucross>0.5&&pt_1>25&&pt_1<28&&abs(eta_1)<2.1&&pt_2>35&&abs(eta_2)<2.1);
       }
       if (era == "2018") {
         is_SingleLepTrigger = (trg_singleelectron>0.5&&pt_1>33&&abs(eta_1)<2.1);
