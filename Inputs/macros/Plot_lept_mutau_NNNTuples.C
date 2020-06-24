@@ -106,6 +106,17 @@ void Plot_lept_mutau_NNNTuples(TString Variable = "m_fast",
 
  
   vector<TString> sampleNames;
+	TString data_sample_label;
+	TString emb_sample_label;
+	if (channel == "mt"){
+		data_sample_label = "SingleMuon";
+		emb_sample_label = "EmbeddedMuTau";
+	}
+	else if (channel == "et"){
+		data_sample_label = "SingleElectron";
+		emb_sample_label = "EmbeddedElTau";
+  }
+	
   if(directory.Contains("Out")){
     sampleNames = {
       channel + "-NOMINAL_ntuple_data", // data (0)
@@ -122,7 +133,7 @@ void Plot_lept_mutau_NNNTuples(TString Variable = "m_fast",
     };
   }else{
     sampleNames = {
-      channel + "-NOMINAL_ntuple_SingleElectron", // data (0)
+      channel + "-NOMINAL_ntuple_" + data_sample_label, // data (0)
       channel + "-NOMINAL_ntuple_DYJets",// (1)Drell-Yan Z->TT
       channel + "-NOMINAL_ntuple_DYJets", // (2)Drell-Yan Z->LL
       channel + "-NOMINAL_ntuple_WJets",// (3)WJets
@@ -135,7 +146,7 @@ void Plot_lept_mutau_NNNTuples(TString Variable = "m_fast",
       channel + "-NOMINAL_ntuple_VBFHToUncorrTauTau" // (9) Scalar VBF H
     }; 
   }
-  if(useEmbedded&&!directory.Contains("Out"))sampleNames[1]=channel + "-NOMINAL_ntuple_EmbeddedElTau";
+  if(useEmbedded&&!directory.Contains("Out"))sampleNames[1]=channel + "-NOMINAL_ntuple_" + emb_sample_label;
   else if(useEmbedded&&directory.Contains("Out"))sampleNames[1]=channel + "-NOMINAL_ntuple_EMB";
   const unsigned int nSamples = sampleNames.size(); //DY is used twice, for Zll and Ztt
   if(!directory.Contains("Out")){ 
