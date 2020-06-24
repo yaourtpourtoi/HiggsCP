@@ -278,6 +278,19 @@ int main(int argc, char * argv[]) {
   bool isEWKZ  = Sample.Contains("EWKZ");
   bool isW     = Sample.Contains("WJets");
   bool isVBF   = Sample.Contains("VBFHToUncorr");
+  
+  
+  TString workspace_filename = TString("/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/HiggsCP/Inputs/htt_scalefactors_legacy_2016.root");
+  cout << "Taking correction workspace from " << workspace_filename << endl;
+  TFile *f_workspace = new TFile(workspace_filename, "read");
+  if (f_workspace->IsZombie()) {
+    std::cout << " workspace file " << workspace_filename << " not found. Please check. " << std::endl;
+     exit(-1);
+   }
+  RooWorkspace *w = (RooWorkspace*)f_workspace->Get("w");
+  TString suffix = "";
+  if (isEmbedded) suffix = "_embed";
+
   ///////////////////////////
   ///  Loop over all samples  
   ///////////////////////////
@@ -2053,22 +2066,10 @@ int main(int argc, char * argv[]) {
 		if(isnan(IP_signif_RefitV_with_BS_2))IP_signif_RefitV_with_BS_2=1e-3;
 	      }
 
-    TString workspace_filename = TString("/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/HiggsCP/Inputs/htt_scalefactors_legacy_2016.root");
-    cout << "Taking correction workspace from " << workspace_filename << endl;
-    TFile *f_workspace = new TFile(workspace_filename, "read");
-    if (f_workspace->IsZombie()) {
-      std::cout << " workspace file " << workspace_filename << " not found. Please check. " << std::endl;
-       exit(-1);
-     }
-    RooWorkspace *w = (RooWorkspace*)f_workspace->Get("w");
-    TString suffix = "";
-    if (isEmbedded) suffix = "_embed";
     w->var("t_pt")->setVal(pt_2);
-    w->var("t_mvadm")->setVal(dmMVA_2);
-    
+    w->var("t_mvadm")->setVal(dmMVA_2);    
     tightvsele_ID = 1;
     nominal_ID = 1;
-    
     if (gen_match_2 == 5) {
       tightvsele_ID = w->function("t_deeptauid_mvadm"+suffix+"_medium_tightvsele")->getVal();
       nominal_ID = w->function("t_deeptauid_mvadm"+suffix+"_medium")->getVal();
