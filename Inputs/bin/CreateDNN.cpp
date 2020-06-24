@@ -1114,11 +1114,11 @@ int main(int argc, char * argv[]) {
 	outTree->Branch("nbtag",&nbtag,"nbtag/I");      
 	  
 	//DeepTua branches
-	//	outTree->Branch("byTightDeepTau2017v2p1VSmu_2",&byTightDeepTau2017v2p1VSmu_2,"byTightDeepTau2017v2p1VSmu_2/F");      
-	//	outTree->Branch("byVLooseDeepTau2017v2p1VSe_2",&byVLooseDeepTau2017v2p1VSe_2,"byVLooseDeepTau2017v2p1VSe_2/F");      
-	//	outTree->Branch("byVVLooseDeepTau2017v2p1VSe_2",&byVVLooseDeepTau2017v2p1VSe_2,"byVVLooseDeepTau2017v2p1VSe_2/F");
-	//	outTree->Branch("byVLooseDeepTau2017v2p1VSmu_2",&byVLooseDeepTau2017v2p1VSmu_2,"byVLooseDeepTau2017v2p1VSmu_2/F");
-	//	outTree->Branch("byTightDeepTau2017v2p1VSe_2",&byTightDeepTau2017v2p1VSe_2,"byTightDeepTau2017v2p1VSe_2/F");      
+		outTree->Branch("byTightDeepTau2017v2p1VSmu_2",&byTightDeepTau2017v2p1VSmu_2,"byTightDeepTau2017v2p1VSmu_2/F");      
+		outTree->Branch("byVLooseDeepTau2017v2p1VSe_2",&byVLooseDeepTau2017v2p1VSe_2,"byVLooseDeepTau2017v2p1VSe_2/F");      
+		outTree->Branch("byVVLooseDeepTau2017v2p1VSe_2",&byVVLooseDeepTau2017v2p1VSe_2,"byVVLooseDeepTau2017v2p1VSe_2/F");
+		outTree->Branch("byVLooseDeepTau2017v2p1VSmu_2",&byVLooseDeepTau2017v2p1VSmu_2,"byVLooseDeepTau2017v2p1VSmu_2/F");
+		outTree->Branch("byTightDeepTau2017v2p1VSe_2",&byTightDeepTau2017v2p1VSe_2,"byTightDeepTau2017v2p1VSe_2/F");      
 	outTree->Branch("byVVVLooseDeepTau2017v2p1VSjet_2",&byVVVLooseDeepTau2017v2p1VSjet_2,"byVVVLooseDeepTau2017v2p1VSjet_2/F");      
 	outTree->Branch("byMediumDeepTau2017v2p1VSjet_2",&byMediumDeepTau2017v2p1VSjet_2,"byMediumDeepTau2017v2p1VSjet_2/F");   
 	
@@ -1985,9 +1985,9 @@ int main(int argc, char * argv[]) {
                     is_CrossTrigger = (trg_mutaucross>0.5&&pt_1>21&&abs(eta_1)<2.1&&pt_2>32&&abs(eta_2)<2.1);
                     is_Trigger = is_SingleLepTrigger || is_CrossTrigger;
 		  }
-		  if( is_Trigger < 0.5 ) continue;
-		  if( byTightDeepTau2017v2p1VSmu_2  < 0.5 ) continue;
-		  if( byVVLooseDeepTau2017v2p1VSe_2 < 0.5 ) continue;
+		  // if( is_Trigger < 0.5 ) continue;
+		  // if( byTightDeepTau2017v2p1VSmu_2  < 0.5 ) continue;
+		  // if( byVVLooseDeepTau2017v2p1VSe_2 < 0.5 ) continue;
 		}else{
 		  if( iso_1 > 0.15 )              continue;
 		  if( pt_1 < 20 )                 continue; 
