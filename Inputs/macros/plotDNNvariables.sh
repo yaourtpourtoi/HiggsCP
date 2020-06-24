@@ -5,9 +5,14 @@ ZTT_METHOD=$4
 
 PATH_TO_TUPLES="/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/mlFramework/In_Tuples_${ERA}/${CHANNEL}/17June/"
 PATH_FOR_OUTPUT="./figures_17June/${ERA}/${FAKES_METHOD}_${ZTT_METHOD}/"
+# PATH_TO_TUPLES="/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/mlFramework/In_Tuples_${ERA}/${CHANNEL}/24June/"
+# PATH_FOR_OUTPUT="./figures_24June/${ERA}/${FAKES_METHOD}_${ZTT_METHOD}/"
 
 WEIGHT="weight*" # trigweight_1/trigweight*
+# WEIGHT="weight*tightvsele_ID/nominal_ID*" # trigweight_1/trigweight*
 CUTS="(iso_1<0.15&&pt_1>25&&pt_2>30&&abs(eta_1)<2.1&&abs(eta_2)<2.3)*(is_SingleLepTrigger)*" #&&byMediumDeepTau2017v2p1VSjet_2>0.5
+# CUTS="(iso_1<0.15&&pt_1>25&&pt_2>30&&abs(eta_1)<2.1&&abs(eta_2)<2.3)*(is_Trigger)*(byTightDeepTau2017v2p1VSmu_2>0.5)*(byVVLooseDeepTau2017v2p1VSe_2>0.5)*" #&&byMediumDeepTau2017v2p1VSjet_2>0.5
+# CUTS="(iso_1<0.15&&pt_1>25&&pt_2>30&&abs(eta_1)<2.1&&abs(eta_2)<2.3)*(is_Trigger)*(byTightDeepTau2017v2p1VSmu_2>0.5)*(byTightDeepTau2017v2p1VSe_2>0.5)*" #&&byMediumDeepTau2017v2p1VSjet_2>0.5
 CUTSIPMU="${CUTS}"
 CUTSIPTAU="${CUTS}(dmMVA_2==0)*"
 CUTS_ACOTAUTAU_00="${CUTS}(dmMVA_2==0)*"
