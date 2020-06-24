@@ -459,7 +459,10 @@ int main(int argc, char * argv[]) {
 
 	float weight_CMS_htt_ttbarShape_13TeVDown;
 	float weight_CMS_htt_ttbarShape_13TeVUp;
-
+ 
+  float tightvsele_ID;
+  float nominal_ID;
+  
 	///////////////////////
 	///Weights for FF: mt
 	//Stat uncertainties
@@ -1170,6 +1173,10 @@ int main(int argc, char * argv[]) {
 
 	outTree->Branch("weight_CMS_htt_ttbarShape_13TeVDown",&weight_CMS_htt_ttbarShape_13TeVDown,"weight_CMS_htt_ttbarShape_13TeVDown/F");
 	outTree->Branch("weight_CMS_htt_ttbarShape_13TeVUp",&weight_CMS_htt_ttbarShape_13TeVUp,"weight_CMS_htt_ttbarShape_13TeVUp/F");
+	
+  outTree->Branch("tightvsele_ID",&tightvsele_ID,"tightvsele_ID/F");
+	outTree->Branch("nominal_ID",&nominal_ID,"nominal_ID/F");
+  
 	////////////////////////////////
 	///Weights for FF: mt
 	//Stat uncertainties
@@ -2044,8 +2051,27 @@ int main(int argc, char * argv[]) {
 		if(isnan(IP_signif_RefitV_with_BS_2))IP_signif_RefitV_with_BS_2=1e-3;
 	      }
 
-
-
+    TString workspace_filename = TString("/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/HiggsCP/Inputs/htt_scalefactors_legacy_2016.root");
+    cout << "Taking correction workspace from " << workspace_filename << endl;
+    TFile *f_workspace = new TFile(workspace_filename, "read");
+    if (f_workspace->IsZombie()) {
+      std::cout << " workspace file " << workspace_filename << " not found. Please check. " << std::endl;
+       exit(-1);
+     }
+    RooWorkspace *w = (RooWorkspace*)f_workspace->Get("w");
+    TString suffix = "";
+    if (isEmbedded) suffix = "_embed";
+    w->var("t_pt")->setVal(pt_2);
+    w->var("t_mvadm")->setVal(dmMVA_2);
+    
+    tightvsele_ID = 1;
+    nominal_ID = 1;
+    
+    if (gen_match_2 == 5) {
+      tightvsele_ID = w->function("t_deeptauid_mvadm"+suffix+"_medium_tightvsele")->getVal();
+      nominal_ID = w->function("t_deeptauid_mvadm"+suffix+"_medium")->getVal();
+    }
+        
 	      //FF method
 	      if (byMediumDeepTau2017v2p1VSjet_2<0.5&&SystematicsName==""){
 		pt_1_ = pt_1;
