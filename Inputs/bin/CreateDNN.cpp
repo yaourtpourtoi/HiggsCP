@@ -11,6 +11,8 @@
 #include "TLorentzVector.h"
 #include "TList.h"
 #include "TSystem.h"
+#include "RooRealVar.h"
+#include "RooFunctor.h"
 #include "RooWorkspace.h"
 #include "RooFunctor.h"
 #include "TMVA/Reader.h"
