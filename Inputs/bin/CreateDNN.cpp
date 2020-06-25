@@ -280,7 +280,7 @@ int main(int argc, char * argv[]) {
   bool isVBF   = Sample.Contains("VBFHToUncorr");
   
   
-  TString workspace_filename = TString("/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/HiggsCP/Inputs/htt_scalefactors_legacy_2016.root");
+  TString workspace_filename = TString("/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/DesyTauAnalyses/NTupleMaker/data/CorrectionWS_IC/htt_scalefactors_legacy_"+ era + ".root");
   cout << "Taking correction workspace from " << workspace_filename << endl;
   TFile *f_workspace = new TFile(workspace_filename, "read");
   if (f_workspace->IsZombie()) {
