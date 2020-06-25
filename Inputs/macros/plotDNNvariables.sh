@@ -4,7 +4,7 @@ FAKES_METHOD=$3
 ZTT_METHOD=$4
 
 PATH_TO_TUPLES="/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/mlFramework/In_Tuples_${ERA}/${CHANNEL}/17June/"
-PATH_FOR_OUTPUT="./figures_17June/${ERA}/${FAKES_METHOD}_${ZTT_METHOD}/"
+PATH_FOR_OUTPUT="./figures_17June/${CHANNEL}/${ERA}/${FAKES_METHOD}_${ZTT_METHOD}/"
 # PATH_TO_TUPLES="/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/mlFramework/In_Tuples_${ERA}/${CHANNEL}/24June/"
 # PATH_FOR_OUTPUT="./figures_24June/${ERA}/${FAKES_METHOD}_${ZTT_METHOD}/"
 
