@@ -96,6 +96,8 @@ root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("IP_signif_PV_with_BS_2","IPs
 # CP observables
 root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("acotautau_bs_00","#phi_{CP}",11,0.,2*TMath::Pi(),"%s","%s","Events",-1,"%s","%s",%s,"%s",%s,%s,true,false,%s,%s)' $WEIGHT $CUTS_ACOTAUTAU_00 $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $CHANNEL $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
 root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("acotautau_bs_01","#phi_{CP}",11,0.,2*TMath::Pi(),"%s","%s","Events",-1,"%s","%s",%s,"%s",%s,%s,true,false,%s,%s)' $WEIGHT $CUTS_ACOTAUTAU_01 $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $CHANNEL $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
+root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("acotautau_refitbs_00","#phi_{CP}",11,0.,2*TMath::Pi(),"%s","%s","Events",-1,"%s","%s",%s,"%s",%s,%s,true,false,%s,%s)' $WEIGHT $CUTS_ACOTAUTAU_00 $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $CHANNEL $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
+root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("acotautau_refitbs_01","#phi_{CP}",11,0.,2*TMath::Pi(),"%s","%s","Events",-1,"%s","%s",%s,"%s",%s,%s,true,false,%s,%s)' $WEIGHT $CUTS_ACOTAUTAU_01 $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $CHANNEL $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
 
  # jets
 root -l -b -q `printf 'Plot_lept_mutau_NNNTuples.C("njets","njets",6,0,6,"%s","%s","Events",-1,"%s","%s",%s,"%s",%s,%s,false,false,%s,%s)' $WEIGHT $CUTS $PATH_TO_TUPLES $PATH_FOR_OUTPUT $ERA $CHANNEL $APPLY_FF $USE_EMBEDDED $SHOW_SIGNAL $COMPARE_CP` 
