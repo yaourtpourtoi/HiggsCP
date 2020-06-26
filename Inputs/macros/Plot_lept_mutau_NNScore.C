@@ -7,7 +7,7 @@
 
 void   Plot_lept_mutau_NNScore(TString directory = "/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/mlFramework/In_Tuples_2016/et/17June/",
 			       TString prediction_directory = "/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/mlFramework/Out_Tuples_2016/et/17June/predictions_2016/",
-			       TString outputDir = "/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/HiggsCP/Inputs/macros/figures_17June/2016/friends/",
+			       TString outputDir = "/nfs/dust/cms/user/filatovo/HTT/CMSSW_10_2_16/src/HiggsCP/Inputs/macros/figures_17June/et/2016/friends/",
 			       int year=2016,
 						 TString channel = "et",
 			       bool FFmethod = true,  
