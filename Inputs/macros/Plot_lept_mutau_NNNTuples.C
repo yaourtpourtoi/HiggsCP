@@ -32,6 +32,7 @@ void Plot_lept_mutau_NNNTuples(TString Variable = "m_fast",
 			       TString ytitle = "Events",
 			       int categoryIndex=-1,
 			       TString directory = "/nfs/dust/cms/user/rasp/storage/cardinia/2018/OutputDNN/March7/predictions_2018/",
+			       TString prediction_directory = "/nfs/dust/cms/user/rasp/storage/cardinia/2018/OutputDNN/March7/predictions_2018/",
 			       TString outputDir = "./figures_March10/",
 			       int era=2018,
 						 TString channel="mt",
@@ -277,7 +278,8 @@ void Plot_lept_mutau_NNNTuples(TString Variable = "m_fast",
     // Reading input file
     TFile * file = new TFile( directory + sampleNames[i] + ".root");
     TTree * tree = (TTree*)file->Get("TauCheck"); 
-    
+		tree->AddFriend("TauCheck", prediction_directory + sampleNames[i] + ".root");
+
     // Name and initialize histograms
     TString histName   = sampleNames[i] + VariableName + "_os";
     TString histNameSS = sampleNames[i] + VariableName + "_ss";
