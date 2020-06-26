@@ -49,20 +49,20 @@ void   Plot_lept_mutau_NNScore(TString directory = "/nfs/dust/cms/user/filatovo/
 		{"10", "(IP_signif_PV_with_BS_1>1.5)*(dmMVA_2==10)*"}
 	};
 	  
-	TString DM_observable = "";
-	TString DM_cut = "";
-	TString DM_label = "";
+	// TString DM_observable = "";
+	// TString DM_cut = "";
+	// TString DM_label = "";
 	
   for(int categoryIndex=0;categoryIndex<nSigCategories;categoryIndex++){
 		for (auto DM_label : map_DM_label) {
-			DM_label = DM_label.second;
-			DM_observable = map_DM_observable.at(DM_label.first);
-			DM_cut = map_DM_cut.at(DM_label.first);
-	    Plot_lept_mutau_NNNTuples("predicted_prob:" + DM_observable,
+			// DM_label = DM_label.second;
+			// DM_observable = map_DM_observable.at(DM_label.first);
+			// DM_cut = map_DM_cut.at(DM_label.first);
+	    Plot_lept_mutau_NNNTuples("predicted_prob:" + map_DM_observable.at(DM_label.first),
 				      "#phi_{CP} vs DNN score",
 				      8,0.,2*TMath::Pi(),
 				      weights,
-				      cuts + DM_cut, //&&IP_signif_RefitV_with_BS_1>1.5&&IP_signif_RefitV_with_BS_2>1.5
+				      cuts + map_DM_cut.at(DM_label.first), //&&IP_signif_RefitV_with_BS_1>1.5&&IP_signif_RefitV_with_BS_2>1.5
 				      "Events",
 				      categoryIndex,
 				      directory,
@@ -78,7 +78,7 @@ void   Plot_lept_mutau_NNScore(TString directory = "/nfs/dust/cms/user/filatovo/
 				      compareCP,
 				      scaleSignal,
 				      blindData,
-				      DM_label,
+				      DM_label.second,
 				      FORCE
 				      );
   }
