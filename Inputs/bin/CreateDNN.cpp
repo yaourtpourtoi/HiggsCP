@@ -349,6 +349,7 @@ int main(int argc, char * argv[]) {
 	float idisoweight_2;
 	float topptweight;
 	float etaufakeweight;
+  float etaufakeweight_dm;
 	float mutaufakeweight;
 	double zptweight;
 	double trkeffweight;
@@ -1085,6 +1086,8 @@ int main(int argc, char * argv[]) {
 		outTree->Branch("puweight",&puweight,"puweight/F");
 		outTree->Branch("topptweight",&topptweight,"topptweight/F");
 		outTree->Branch("zptweight",&zptweight,"zptweight/D");
+    outTree->Branch("etaufakeweight",&etaufakeweight,"etaufakeweight/F");
+		outTree->Branch("etaufakeweight_dm",&etaufakeweight_dm,"etaufakeweight_dm/F");
 	//	outTree->Branch("trkeffweight",&trkeffweight,"trkeffweight/D");
 	outTree->Branch("weight",&weight,"weight/F");
 	outTree->Branch("weight_CMS_PreFire_13TeVUp",&weight_CMS_PreFire_13TeVUp,"CMS_PreFire_13TeVUp/F");
@@ -3367,7 +3370,19 @@ int main(int argc, char * argv[]) {
 		  //TFile eTauFRfile("/nfs/dust/cms/user/cardinia/HtoTauTau/HiggsCP/DNN/Jan20/CMSSW_10_2_16/src/TauPOG/TauIDSFs/data/TauID_SF_eta_DeepTau2017v2p1VSe_"+Period+".root"); 
 		  //TH1F *SFhist = (TH1F*) eTauFRfile.Get(wpVsEle);
 		  //weight *= SFhist->GetBinContent(SFhist->GetXaxis()->FindBin(eta_2));
-		  weight *= etaufakeweight;
+      
+      if (era == "2016") {
+        if (abs(eta_2) < 1.5) {
+            if (tau_decay_mode_2 == 0) etaufakeweight_dm = 0.923;
+            else if (tau_decay_mode_2 == 1) etaufakeweight_dm = 1.334;
+            else etaufakeweight_dm = 1.0;
+        } else {
+          if (tau_decay_mode_2 == 0) etaufakeweight_dm = 0.994;
+          else if (tau_decay_mode_2 == 1) etaufakeweight_dm = 1.055;
+          else etaufakeweight_dm = 1.0;
+        }
+        weight *= etaufakeweight_dm;
+      } else weight *= etaufakeweight;
 		}
 	      }
 
